@@ -32,6 +32,8 @@ namespace CPU_widget
             metroProgressBarRAM.Value = (int)fRam;
             CpuPercent.Text = string.Format("{0:0.00}%", fCpu);
             RamPercent.Text = string.Format("{0:0.00}%", fRam);
+            chart1.Series["CPU"].Points.AddY(fCpu);
+            chart1.Series["RAM"].Points.AddY(fRam);
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
@@ -44,6 +46,5 @@ namespace CPU_widget
 
             timer1.Start();
         }
-
     }
 }
