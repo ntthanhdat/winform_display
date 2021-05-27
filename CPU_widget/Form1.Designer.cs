@@ -31,9 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
+            this.CpuPercent = new MetroFramework.Controls.MetroLabel();
+            this.metroProgressBarCPU = new MetroFramework.Controls.MetroProgressBar();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroProgressBar2 = new MetroFramework.Controls.MetroProgressBar();
+            this.RamPercent = new MetroFramework.Controls.MetroLabel();
+            this.metroProgressBarRAM = new MetroFramework.Controls.MetroProgressBar();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.performanceRAM = new System.Diagnostics.PerformanceCounter();
             this.performanceCPU = new System.Diagnostics.PerformanceCounter();
@@ -71,24 +73,35 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.metroProgressBar1);
+            this.splitContainer2.Panel1.Controls.Add(this.CpuPercent);
+            this.splitContainer2.Panel1.Controls.Add(this.metroProgressBarCPU);
             this.splitContainer2.Panel1.Controls.Add(this.metroLabel1);
             this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.metroProgressBar2);
+            this.splitContainer2.Panel2.Controls.Add(this.RamPercent);
+            this.splitContainer2.Panel2.Controls.Add(this.metroProgressBarRAM);
             this.splitContainer2.Panel2.Controls.Add(this.metroLabel2);
             this.splitContainer2.Size = new System.Drawing.Size(253, 370);
             this.splitContainer2.SplitterDistance = 172;
             this.splitContainer2.TabIndex = 0;
             // 
-            // metroProgressBar1
+            // CpuPercent
             // 
-            this.metroProgressBar1.Location = new System.Drawing.Point(5, 52);
-            this.metroProgressBar1.Name = "metroProgressBar1";
-            this.metroProgressBar1.Size = new System.Drawing.Size(215, 108);
-            this.metroProgressBar1.TabIndex = 1;
+            this.CpuPercent.AutoSize = true;
+            this.CpuPercent.Location = new System.Drawing.Point(214, 14);
+            this.CpuPercent.Name = "CpuPercent";
+            this.CpuPercent.Size = new System.Drawing.Size(20, 19);
+            this.CpuPercent.TabIndex = 5;
+            this.CpuPercent.Text = "%";
+            // 
+            // metroProgressBarCPU
+            // 
+            this.metroProgressBarCPU.Location = new System.Drawing.Point(19, 49);
+            this.metroProgressBarCPU.Name = "metroProgressBarCPU";
+            this.metroProgressBarCPU.Size = new System.Drawing.Size(215, 108);
+            this.metroProgressBarCPU.TabIndex = 1;
             // 
             // metroLabel1
             // 
@@ -99,31 +112,41 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "CPU:";
             // 
-            // metroProgressBar2
+            // RamPercent
             // 
-            this.metroProgressBar2.Location = new System.Drawing.Point(19, 62);
-            this.metroProgressBar2.Name = "metroProgressBar2";
-            this.metroProgressBar2.Size = new System.Drawing.Size(215, 108);
-            this.metroProgressBar2.TabIndex = 3;
-            this.metroProgressBar2.Click += new System.EventHandler(this.metroProgressBar2_Click);
+            this.RamPercent.AutoSize = true;
+            this.RamPercent.Location = new System.Drawing.Point(214, 29);
+            this.RamPercent.Name = "RamPercent";
+            this.RamPercent.Size = new System.Drawing.Size(20, 19);
+            this.RamPercent.TabIndex = 4;
+            this.RamPercent.Text = "%";
+            // 
+            // metroProgressBarRAM
+            // 
+            this.metroProgressBarRAM.Location = new System.Drawing.Point(19, 62);
+            this.metroProgressBarRAM.Name = "metroProgressBarRAM";
+            this.metroProgressBarRAM.Size = new System.Drawing.Size(215, 108);
+            this.metroProgressBarRAM.TabIndex = 3;
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(39, 24);
+            this.metroLabel2.Location = new System.Drawing.Point(22, 29);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(41, 19);
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "RAM:";
-            this.metroLabel2.Click += new System.EventHandler(this.metroLabel2_Click);
             // 
             // performanceRAM
             // 
             this.performanceRAM.CategoryName = "Memory";
+            this.performanceRAM.CounterName = "% Committed Bytes In Use";
             // 
             // performanceCPU
             // 
-            this.performanceCPU.CategoryName = "CPU";
+            this.performanceCPU.CategoryName = "Process";
+            this.performanceCPU.CounterName = "% Processor Time";
+            this.performanceCPU.InstanceName = "Explorer";
             // 
             // timer1
             // 
@@ -138,6 +161,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "CPU monitor";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -160,10 +184,12 @@
         private System.Diagnostics.PerformanceCounter performanceRAM;
         private System.Diagnostics.PerformanceCounter performanceCPU;
         private System.Windows.Forms.Timer timer1;
-        private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
+        private MetroFramework.Controls.MetroProgressBar metroProgressBarCPU;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroProgressBar metroProgressBar2;
+        private MetroFramework.Controls.MetroProgressBar metroProgressBarRAM;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel CpuPercent;
+        private MetroFramework.Controls.MetroLabel RamPercent;
     }
 }
 
