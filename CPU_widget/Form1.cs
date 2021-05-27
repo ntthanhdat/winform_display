@@ -43,11 +43,45 @@ namespace CPU_widget
         }
         public void UpdateProcesses()
         {
+            ListBox lb2 = new ListBox();
             listBox1.Items.Clear();
             foreach (Process p in Process.GetProcesses())
             {
-                listBox1.Items.Add(p.ProcessName + "  -  " + p.Id);
+                lb2.Items.Add(p.ProcessName + "  -  " + p.Id);
             }
+
+            ArrayList q = new ArrayList();
+            foreach (object o in lb2.Items)
+                q.Add(o);
+            q.Sort();
+            foreach (object o in q)
+            {
+                listBox1.Items.Add(o);
+            }
+
+        }
+        public void KillProcess()
+        {
+            foreach (Process p in Process.GetProcesses())
+            {
+                string[] arr = listBox1.SelectedItem.ToString().Split('-');
+                string process = arr[0].Trim();
+                int id = Convert.ToInt32(arr[1].Trim());
+                if(p.ProcessName == process && p.Id == id)
+                {
+                    try
+                    {
+                        p.Kill();
+                        MessageBox.Show("Process killed", "Task manager");
+
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Failed to kill process", "Task manager");
+                    }
+                }
+            }
+            UpdateProcesses();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -59,6 +93,14 @@ namespace CPU_widget
         private void metroButton1_Click(object sender, EventArgs e)
         {
             UpdateProcesses();
+        }
+
+       
+
+
+        private void killclick(object sender, EventArgs e)
+        {
+            KillProcess();
         }
     }
 }
