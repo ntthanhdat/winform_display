@@ -34,17 +34,31 @@ namespace CPU_widget
             RamPercent.Text = string.Format("{0:0.00}%", fRam);
             chart1.Series["CPU"].Points.AddY(fCpu);
             chart1.Series["RAM"].Points.AddY(fRam);
+            
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
+        public void UpdateProcesses()
+        {
+            listBox1.Items.Clear();
+            foreach (Process p in Process.GetProcesses())
+            {
+                listBox1.Items.Add(p.ProcessName + "  -  " + p.Id);
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
             timer1.Start();
+            UpdateProcesses();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            UpdateProcesses();
         }
     }
 }
