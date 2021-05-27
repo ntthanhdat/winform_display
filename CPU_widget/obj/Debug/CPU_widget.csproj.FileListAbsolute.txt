@@ -12,3 +12,17 @@ C:\Users\ADMIN\Documents\CPU_widget\CPU_widget\obj\Debug\CPU_widget.csproj.CopyC
 C:\Users\ADMIN\Documents\CPU_widget\CPU_widget\obj\Debug\CPU_widget.exe
 C:\Users\ADMIN\Documents\CPU_widget\CPU_widget\obj\Debug\CPU_widget.pdb
 C:\Users\ADMIN\Documents\CPU_widget\CPU_widget\obj\Debug\CPU_widget.csprojAssemblyReference.cache
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\CPU_widget.exe.config
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\CPU_widget.exe
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\CPU_widget.pdb
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\MetroFramework.Design.dll
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\MetroFramework.dll
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.csprojAssemblyReference.cache
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.Form1.resources
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.Properties.Resources.resources
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.csproj.GenerateResource.cache
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.csproj.CopyComplete
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.exe
+C:\Users\ADMIN\Source\Repos\winform_display\CPU_widget\obj\Debug\CPU_widget.pdb
